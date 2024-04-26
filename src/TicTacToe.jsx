@@ -2,7 +2,7 @@ import { React, useState } from "react";
 
 
 export function TicTacToe() {
-    const TicTacToeGridArray = [
+    const InitialTicTacToeGridArray = [
         { id: 1, content: null },
         { id: 2, content: null },
         { id: 3, content: null },
@@ -14,11 +14,11 @@ export function TicTacToe() {
         { id: 9, content: null }
     ];
 
-    const [initialStateOfGrid, setStateOfGrid] = useState(TicTacToeGridArray)
+    const [StateOfGrid, setStateOfGrid] = useState(InitialTicTacToeGridArray)
 
     function whoseTurnItIs() {
         let nullCount = 0
-        for (let element of TicTacToeGridArray) {
+        for (let element of InitialTicTacToeGridArray) {
             if (element === null) {
                 nullCount++;
             }
@@ -46,7 +46,7 @@ export function TicTacToe() {
 
     }
 
-    const gridCells = TicTacToeGridArray.map((cell) => {
+    const gridCells = InitialTicTacToeGridArray.map((cell) => {
         if (cell.content === null) {
             return (
                 <div className="ticTacToeCell" key={cell.id} onClick={takeTurn}></div>
