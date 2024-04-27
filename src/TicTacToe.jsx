@@ -9,8 +9,8 @@ export function TicTacToe() {
         { id: 2, content: "x" },
         { id: 3, content: null },
         { id: 4, content: "x" },
-        { id: 5, content: null },
-        { id: 6, content: "o" },
+        { id: 5, content: "o" },
+        { id: 6, content: null },
         { id: 7, content: null },
         { id: 8, content: null }
     ];
@@ -19,7 +19,6 @@ export function TicTacToe() {
     console.log("rerendered grid", stateOfGrid)
 
     function takeTurn(cellId, event) {
-        console.log(whoseTurn)
         console.log("clicked cell " + cellId)
         const updatedGrid = [...InitialTicTacToeGridArray]
         if (whoseTurn = "player1" && updatedGrid[cellId].content === null) {
@@ -37,27 +36,21 @@ export function TicTacToe() {
     }
 
     function whoseTurnItIs() {
-        let xCount = []
-        let oCount = []
+        let nullCount = 0
         for (let element of stateOfGrid) {
-            if (stateOfGrid.content === "x") {
-                xCount.push("x")
-            }
-            else if (stateOfGrid.content === "0") {
-                oCount.push("o")
-            }
-            else {
-                return null
+            if (stateOfGrid.content === null) {
+                nullCount++
             }
         }
-        if (xCount > oCount) {
-            return "player2"
-        }
-        else {
-            return "player1"
-        }
+        return nullCount % 2 === 1 ? "player1" : "player2";
     }
+
+
     let whoseTurn = whoseTurnItIs()
+
+
+
+
 
     const gridCells = stateOfGrid.map((cell) => {
 
