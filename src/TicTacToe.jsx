@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 export function TicTacToe() {
 
     const InitialTicTacToeGridArray = [
@@ -41,7 +40,6 @@ export function TicTacToe() {
         return nullCount % 2 === 1 ? "player1" : "player2";
     }
 
-
     let whoseTurn = whoseTurnItIs()
 
     const gridCells = stateOfGrid.map((cell) => {
@@ -69,4 +67,8 @@ function getContentForCell(xoOrNull) {
     else {
         return null
     }
+}
+
+function checkForWinner() {
+
 }
