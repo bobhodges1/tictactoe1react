@@ -1,15 +1,15 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 
 export function TicTacToe() {
     const InitialTicTacToeGridArray = [
         { id: 1, content: null },
         { id: 2, content: null },
-        { id: 3, content: null },
+        { id: 3, content: "x" },
         { id: 4, content: null },
-        { id: 5, content: null },
+        { id: 5, content: "x" },
         { id: 6, content: null },
-        { id: 7, content: null },
+        { id: 7, content: "o" },
         { id: 8, content: null },
         { id: 9, content: null }
     ];
@@ -36,25 +36,44 @@ export function TicTacToe() {
 
     let whoseTurn = whoseTurnItIs()
 
-    function takeTurn() {
-        if (whoseTurn = "player1") {
-            console.log("cell clicked")
+    function takeTurn(cellId) {
+        setStateOfGrid((previousTicTacToeGrid) => {
+            return previousTicTacToeGrid.map
+
+        })
+
+        // if (whoseTurn = "player1") {
+        //     console.log("cell clicked")
 
 
-
-        }
 
     }
 
-    const gridCells = InitialTicTacToeGridArray.map((cell) => {
-        if (cell.content === null) {
-            return (
-                <div className="ticTacToeCell" key={cell.id} onClick={takeTurn}></div>
-            );
-        }
+
+
+    const gridCells = StateOfGrid.map((cell) => {
+
+        return (
+            <div className="ticTacToeCell"
+                key={cell.id} onClick={takeTurn}>
+                {getContentForCell(cell.content)}
+            </div>
+        );
+
     })
 
 
     return <div className="ticTacToeGrid">{gridCells}</div>
 
+}
+function getContentForCell(xoOrNull) {
+    if (xoOrNull === "x") {
+        return "👽"
+    }
+    else if (xoOrNull === "o") {
+        return "🐮"
+    }
+    else {
+        return null
+    }
 }
