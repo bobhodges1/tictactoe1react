@@ -20,6 +20,7 @@ export function TicTacToe() {
     function takeTurn(cellId, event) {
         console.log(whoseTurn)
         console.log("clicked cell " + cellId)
+        console.log(checkForWinner())
         const updatedGrid = [...stateOfGrid]
         if (whoseTurn === "player1" && updatedGrid[cellId].content === null) {
             updatedGrid[cellId].content = "x"
@@ -32,7 +33,6 @@ export function TicTacToe() {
         else {
             return null
         }
-
     }
 
     function whoseTurnItIs() {
@@ -69,6 +69,3 @@ function getContentForCell(xoOrNull) {
     }
 }
 
-function checkForWinner() {
-
-}
