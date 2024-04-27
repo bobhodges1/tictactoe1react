@@ -2,51 +2,64 @@ import React, { useState } from "react";
 
 
 export function TicTacToe() {
+
     const InitialTicTacToeGridArray = [
+        { id: 0, content: null },
         { id: 1, content: null },
-        { id: 2, content: null },
-        { id: 3, content: "x" },
-        { id: 4, content: null },
-        { id: 5, content: "x" },
-        { id: 6, content: null },
-        { id: 7, content: "o" },
-        { id: 8, content: null },
-        { id: 9, content: null }
+        { id: 2, content: "x" },
+        { id: 3, content: null },
+        { id: 4, content: "x" },
+        { id: 5, content: null },
+        { id: 6, content: "o" },
+        { id: 7, content: null },
+        { id: 8, content: null }
     ];
 
-    const [StateOfGrid, setStateOfGrid] = useState(InitialTicTacToeGridArray)
-
-    function whoseTurnItIs() {
-        let nullCount = 0
-        for (let element of InitialTicTacToeGridArray) {
-            if (element === null) {
-                nullCount++;
-            }
-        }
-        if (nullCount % 2 === 1) {
-            console.log("player1")
-            return "player1"
-        } else if (nullCount % 2 === 0) {
-            console.log("player2")
-            return "player2"
-        }
-
-    }
-
-
-    let whoseTurn = whoseTurnItIs()
+    const [stateOfGrid, setStateOfGrid] = useState(InitialTicTacToeGridArray)
+    console.log("rerendered grid", stateOfGrid)
 
     function takeTurn(cellId, event) {
+        console.log(whoseTurn)
         console.log("clicked cell " + cellId)
-
-
-
+        const updatedGrid = [...InitialTicTacToeGridArray]
+        if (whoseTurn = "player1" && updatedGrid[cellId].content === null) {
+            updatedGrid[cellId].content = "x"
+            setStateOfGrid(updatedGrid)
+        }
+        else if (whoseTurn = "player2" && updatedGrid[cellId].content === null) {
+            updatedGrid[cellId].content = "o"
+            setStateOfGrid(updatedGrid)
+        }
+        else {
+            return null
+        }
 
     }
 
+    function whoseTurnItIs() {
+        let xCount = []
+        let oCount = []
+        for (let element of stateOfGrid) {
+            if (stateOfGrid.content === "x") {
+                xCount.push("x")
+            }
+            else if (stateOfGrid.content === "0") {
+                oCount.push("o")
+            }
+            else {
+                return null
+            }
+        }
+        if (xCount > oCount) {
+            return "player2"
+        }
+        else {
+            return "player1"
+        }
+    }
+    let whoseTurn = whoseTurnItIs()
 
-
-    const gridCells = StateOfGrid.map((cell) => {
+    const gridCells = stateOfGrid.map((cell) => {
 
         return (
             <div className="ticTacToeCell"
