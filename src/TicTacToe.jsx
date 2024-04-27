@@ -20,7 +20,7 @@ export function TicTacToe() {
     function takeTurn(cellId, event) {
         console.log(whoseTurn)
         console.log("clicked cell " + cellId)
-        console.log(checkForWinner())
+        console.log(isThereAWinner)
         const updatedGrid = [...stateOfGrid]
         if (whoseTurn === "player1" && updatedGrid[cellId].content === null) {
             updatedGrid[cellId].content = "x"
@@ -40,7 +40,23 @@ export function TicTacToe() {
         return nullCount % 2 === 1 ? "player1" : "player2";
     }
 
+    function checkForWinner() {
+        if (stateOfGrid[0].content !== null &&
+            stateOfGrid[0].content === stateOfGrid[1].content &&
+            stateOfGrid[0].content === stateOfGrid[2].content
+        )
+            return "winner"
+        else {
+            return "no winner"
+        }
+
+
+
+    }
+
+
     let whoseTurn = whoseTurnItIs()
+    let isThereAWinner = checkForWinner()
 
     const gridCells = stateOfGrid.map((cell) => {
 
@@ -57,6 +73,7 @@ export function TicTacToe() {
     return <div className="ticTacToeGrid">{gridCells}</div>
 
 }
+
 function getContentForCell(xoOrNull) {
     if (xoOrNull === "x") {
         return "👽"
