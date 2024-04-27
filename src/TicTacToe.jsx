@@ -36,14 +36,9 @@ export function TicTacToe() {
 
     let whoseTurn = whoseTurnItIs()
 
-    function takeTurn(cellId) {
-        setStateOfGrid((previousTicTacToeGrid) => {
-            return previousTicTacToeGrid.map
+    function takeTurn(cellId, event) {
+        console.log("clicked cell " + cellId)
 
-        })
-
-        // if (whoseTurn = "player1") {
-        //     console.log("cell clicked")
 
 
 
@@ -55,7 +50,7 @@ export function TicTacToe() {
 
         return (
             <div className="ticTacToeCell"
-                key={cell.id} onClick={takeTurn}>
+                key={cell.id} onClick={(evt) => takeTurn(cell.id, evt)}>
                 {getContentForCell(cell.content)}
             </div>
         );
